@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Google Search</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8">
+  <title>Search</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Navigation links -->
-    <div class="top-right">
-        <a href="imagesearch.html">Image Search</a>
-        <a href="advanced.html">Advanced Search</a>
-    </div>
+  <header class="topbar">
+    <nav class="top-links">
+      <a href="imagesearch.html">Image Search</a>
+      <a href="advanced.html">Advanced Search</a>
+    </nav>
+  </header>
 
-    <!-- Centered search form -->
-    <div class="centered">
-        <form action="https://www.google.com/search">
-            <input type="text" name="q" class="search-bar">
-            <div class="buttons">
-                <input type="submit" value="Google Search" class="search-btn">
-                <input type="submit" name="btnI" value="I'm Feeling Lucky" class="search-btn">
-            </div>
-        </form>
-    </div>
+  <main class="container">
+    <img src="google.jpeg" alt="Logo" class="logo">
+
+    <form class="search-form" action="https://www.google.com/search" method="GET" role="search">
+      <input type="search" name="q" class="big-input" placeholder="Search the web..." aria-label="Search">
+      <div class="button-row">
+        <button type="submit" class="primary-btn">Search</button>
+      </div>
+    </form>
+  </main>
 </body>
 </html>
