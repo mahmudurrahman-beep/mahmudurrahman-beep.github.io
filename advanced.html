@@ -1,33 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Google Advanced Search</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8">
+  <title>Advanced Search</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Navigation link -->
-    <div class="top-right">
-        <a href="index.html">Google Search</a>
-    </div>
+  <header class="topbar">
+    <nav class="top-links">
+      <a href="index.html">Web Search</a>
+      <a href="imagesearch.html">Image Search</a>
+    </nav>
+  </header>
 
-    <!-- Advanced search form -->
-    <div class="advanced-form">
-        <form action="https://www.google.com/search">
-            <label>Find pages with… “all these words:”</label>
-            <input type="text" name="as_q"><br>
+  <main class="container">
+    <img src="google.jpeg" alt="Logo" class="logo">
 
-            <label>Find pages with… “this exact word or phrase:”</label>
-            <input type="text" name="as_epq"><br>
+    <form id="advancedForm" class="advanced-form" action="https://www.google.com/search" method="GET" role="search">
+      <div class="field">
+        <label for="q">Query</label>
+        <input id="q" name="q" type="text" class="big-input" placeholder="Enter advanced query">
+      </div>
 
-            <label>Find pages with… “any of these words:”</label>
-            <input type="text" name="as_oq"><br>
+      <div class="field-row">
+        <div class="field small-field">
+          <label for="safe">Safe Search</label>
+          <select id="safe" name="safe_select">
+            <option value="off">Off</option>
+            <option value="active">On</option>
+          </select>
+        </div>
 
-            <label>Find pages with… “none of these words:”</label>
-            <input type="text" name="as_eq"><br>
+        <div class="field small-field">
+          <label for="lang">Language</label>
+          <select id="lang" name="lang_select">
+            <option value="">Any</option>
+            <option value="lang_en">English</option>
+            <option value="lang_bn">Bengali</option>
+            <option value="lang_fr">French</option>
+          </select>
+        </div>
+      </div>
 
-            <input type="submit" value="Advanced Search" class="advanced-btn">
-        </form>
-    </div>
+      <div class="field-row">
+        <div class="field small-field">
+          <label for="filetype">File Type</label>
+          <select id="filetype" name="filetype_select">
+            <option value="">Any</option>
+            <option value="pdf">PDF</option>
+            <option value="doc">DOC</option>
+            <option value="ppt">PPT</option>
+            <option value="jpg">JPG</option>
+          </select>
+        </div>
+
+        <div class="field small-field">
+          <label for="site">Site or domain</label>
+          <input id="site" name="site" type="text" placeholder="example.com or leave blank">
+        </div>
+      </div>
+
+      <input type="hidden" name="safe" id="hidden-safe" value="">
+      <input type="hidden" name="lr" id="hidden-lr" value="">
+      <input type="hidden" name="as_filetype" id="hidden-filetype" value="">
+      <input type="hidden" name="as_sitesearch" id="hidden-site" value="">
+
+      <div class="button-row">
+        <button type="submit" class="primary-btn advanced-btn">Search</button>
+      </div>
+    </form>
+  </main>
+
+  <script>
+    document.getElementById('advancedForm').addEventListener('submit', function () {
+      var safeSelect = document.getElementById('safe').value;
+      document.getElementById('hidden-safe').value = (safeSelect === 'active') ? 'active' : '';
+
+      var langSelect = document.getElementById('lang').value;
+      document.getElementById('hidden-lr').value = langSelect;
+
+      var filetypeSelect = document.getElementById('filetype').value;
+      document.getElementById('hidden-filetype').value = filetypeSelect;
+
+      var siteVal = document.getElementById('site').value.trim();
+      document.getElementById('hidden-site').value = siteVal;
+    });
+  </script>
 </body>
 </html>
