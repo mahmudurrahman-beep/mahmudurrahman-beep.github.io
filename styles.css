@@ -1,69 +1,107 @@
+* { box-sizing: border-box; }
+html, body { height: 100%; }
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f2f2f2;
+  color: #222;
+  position: relative;
 }
-.top-right {
-    position: absolute;
-    top: 10px;
-    right: 20px;
+
+/* Top-right links fixed at the top */
+.topbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; }
+.top-links {
+  position: fixed;
+  top: 12px;
+  right: 16px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
 }
-.top-right a {
-    margin-left: 15px;
-    text-decoration: none;
-    color: #1a73e8;
-    font-size: 14px;
+.top-links a {
+  display: inline-block;
+  padding: 6px 10px;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 14px;
+  background: rgba(255,255,255,0.85);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
 }
-.centered {
-    margin-top: 200px;
+.top-links a:hover { background: rgba(0,0,0,0.06); }
+
+/* Main container leaves space for fixed top links */
+.container {
+  text-align: center;
+  margin-top: 110px;
+  padding: 0 16px;
 }
-.search-bar {
-    width: 400px;
-    padding: 10px;
-    border-radius: 25px;
-    border: 1px solid #dcdcdc;
+
+/* Logo centering and left nudge */
+.logo {
+  display: block;
+  width: 220px;
+  max-width: 60vw;
+  height: auto;
+  margin: 0 auto 30px auto;
+  transition: transform 0.18s ease;
+  transform: translateX(-12px);
 }
-.buttons {
-    margin-top: 20px;
+.logo:hover { transform: translateX(-12px) scale(1.05); }
+
+/* Make the search input larger and more prominent */
+.big-input {
+  padding: 14px 16px;
+  width: 520px;
+  max-width: 86vw;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 18px;
+  outline: none;
+  display: block;
+  margin: 0 auto;
 }
-.search-btn {
-    padding: 10px 20px;
-    margin: 5px;
-    border: none;
-    background-color: #f8f9fa;
-    border-radius: 4px;
-    cursor: pointer;
+
+/* Button row places the button below the input and centers it */
+.button-row {
+  margin-top: 14px;
+  display: flex;
+  justify-content: center;
 }
-.search-btn:hover {
-    border: 1px solid #dcdcdc;
+
+/* Primary button style */
+.primary-btn {
+  padding: 12px 26px;
+  border: none;
+  background-color: #4285f4;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
 }
-.advanced-form {
-    margin: 100px auto;
-    width: 600px;
-    text-align: left;
+.primary-btn:hover { background-color: #357ae8; }
+
+/* Advanced button hover orange */
+.advanced-btn:hover { background-color: orange; }
+
+/* Advanced form layout */
+.advanced-form { display: block; max-width: 760px; margin: 0 auto; }
+.field { margin: 8px 0; text-align: left; }
+.field-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.small-field { min-width: 200px; max-width: 48%; }
+.field label { font-size: 13px; color: #444; margin-bottom: 6px; display: block; }
+.field input[type="text"], .field select {
+  padding: 8px 10px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 15px;
 }
-.advanced-form label {
-    display: block;
-    margin-top: 15px;
-    font-size: 14px;
-}
-.advanced-form input[type="text"] {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    border: 1px solid #dcdcdc;
-    border-radius: 4px;
-}
-.advanced-btn {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #1a73e8;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-.advanced-btn:hover {
-    background-color: #1558b0;
+
+/* Responsive tweaks */
+@media (max-width: 640px) {
+  .logo { width: 180px; transform: translateX(-8px); }
+  .big-input { width: 92vw; font-size: 16px; padding: 12px; }
+  .small-field { max-width: 100%; min-width: 100%; }
+  .container { margin-top: 100px; }
 }
